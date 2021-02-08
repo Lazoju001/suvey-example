@@ -9,11 +9,11 @@ require('dotenv').config();
 
 
 
-mongoose.connect(process.env.MONGO_URL_LOCAL).then(()=>console.log("Conectado a la base de datos",process.env.MONGO_URL_LOCAL))
+mongoose.connect(process.env.MONGO_URL).then(()=>console.log("Conectado a la base de datos",process.env.MONGO_URL_LOCAL))
 
 app.use(cors())
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/api', routes);
 
-app.listen(3005 ,console.log("Escuchando en el puerto 3005"))
+app.listen(process.env.PORT  || 3005 ,console.log("Escuchando en el PORT"))
