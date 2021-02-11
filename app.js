@@ -9,7 +9,7 @@ require('dotenv').config();
 
 
 
-mongoose.connect(process.env.MONGO_URL).then(()=>console.log("Conectado a la base de datos",process.env.MONGO_URL_LOCAL))
+mongoose.connect(process.env.MONGO_URL).then(()=>console.log("Conectado a la base de datos",process.env.MONGO_URL))
 
 app.use(cors())
 app.use(bodyParser.json());

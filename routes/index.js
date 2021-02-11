@@ -91,7 +91,11 @@ router.get('/answers/:id' , function(req , res){
 })
 
 router.post('/answer' , function(req , res){
- let data= [{user:"juan",question:'como te llamas', questionImg:"url" , type:"multiple choice" , response:"respuesta joya", responseImg:"url2" , surveyId:"aksjdkasdjkajdp999" }, {user:"pedro",question:'cuantos años tenes',questionImg:'url3', type:"multiple choice" , response:"respuesta mala",responseImg:"url4"  , surveyId:"esodlasdasda3748374" }]
+req.query.responses =req.query.responses.map((r)=>{
+  return JSON.parse(r)
+ }) 
+ 
+ let data=req.query.responses  
 
  if (!data){
   return res.status(400).json({
