@@ -17,7 +17,7 @@ const s3=new aws.S3({
 
 //mostrar
 router.get('/survey', function (req, res) {
-  Survey.find().then((surveys)=>res.json(surveys)) 
+  Survey.find().sort({createdAt: -1}).then((surveys)=>res.json(surveys)) 
 });
 
 router.get('/survey/:id', function (req, res) {
