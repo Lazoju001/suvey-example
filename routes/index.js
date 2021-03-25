@@ -20,6 +20,10 @@ router.get('/survey', function (req, res) {
   Survey.find().sort({createdAt: -1}).then((surveys)=>res.json(surveys)) 
 });
 
+router.get('/survey/type/:type', function (req, res) {
+  Survey.find({type: req.params.type}).sort({createdAt: -1}).then((surveys)=>res.json(surveys)) 
+});
+
 router.get('/survey/:id', function (req, res) {
   Survey.findOne({_id: req.params.id}).then((survey)=>res.json(survey)) 
 });
