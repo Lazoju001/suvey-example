@@ -16,4 +16,4 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/api', routes);
 
-app.listen(process.env.PORT  || 3005 ,console.log("Escuchando en el PORT"))
+app.listen(process.env.PORT  || 3005 ,console.log("Escuchando en el puerto ::"))
