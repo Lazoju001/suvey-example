@@ -5,13 +5,12 @@ const Answer= require('../model/answer.model')
 const multer = require('multer')
 const multerConfig = require('../config/multerConfig.js')
 const aws = require ('aws-sdk');
+require('dotenv').config();
 const s3=new aws.S3({     
-  accessKeyId:"AKIAZYXQ555RAI7HZQDG",
-  secretAccessKey:"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",
-  region:'sa-east-1'
+  accessKeyId:process.env.AWS_ACCES_KEY,
+  secretAccessKey:process.env.AWS_SECRET_ACCESS_KEY,
+  region:process.env.AWS_DEFAULT_REGION
   });
-
-
 
 
 
