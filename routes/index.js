@@ -16,14 +16,17 @@ const s3=new aws.S3({
 
 //mostrar
 router.get('/survey', function (req, res) {
+  console.log('/survey')
   Survey.find().sort({createdAt: -1}).then((surveys)=>res.json(surveys)) 
 });
 
 router.get('/survey/type/:type', function (req, res) {
+  console.log('/survey/type/:type')
   Survey.find({type: req.params.type}).sort({createdAt: -1}).then((surveys)=>res.json(surveys)) 
 });
 
 router.get('/survey/:id', function (req, res) {
+  console.log('/survey/:id')
   Survey.findOne({_id: req.params.id}).then((survey)=>res.json(survey)) 
 });
 
@@ -46,11 +49,7 @@ res.send('delete');
 
 //agregar
 router.post('/survey', function (req, res) {
-const data=req.query
-
- data.questions =data.questions.map((q)=>{
-  return JSON.parse(q)
- })  
+const data=req.body
   
   if (!data){
       return res.status(400).json({
@@ -59,8 +58,6 @@ const data=req.query
   } 
   
     const survey=new Survey (data) 
-
-
 
     survey.save().then(()=>{
       res.status(200).json({
@@ -80,12 +77,10 @@ router.delete('/delete/:id', function(req,res){
 })
 
 router.put('/edit' , function (req , res) {
-const data=req.query
-const _id=req.query._id
 
- data.questions =data.questions.map((q)=>{
-  return JSON.parse(q)
- })  
+const data=req.body
+const _id=req.body._id
+
  Survey.replaceOne({_id }, data).then(()=> res.send('editado'));
 })
 
